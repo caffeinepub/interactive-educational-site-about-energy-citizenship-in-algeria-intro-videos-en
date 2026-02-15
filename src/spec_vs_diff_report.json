@@ -1,0 +1,27 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T17:43:40.367Z",
+  "summary": "REQ-18 and REQ-19 appear largely implemented: global theme tokens were updated in frontend/src/index.css for both :root and .dark, and key UI surfaces (TopNav, IntroSplash, DecoratedHeading, HelpBotPanel) were restyled using Tailwind token-based classes while preserving RTL direction in global styles. Some additional visual changes (global background overlay and footer styling) were introduced beyond the explicitly requested surfaces.",
+  "missing_requirements": [],
+  "hallucinated_features": [
+    {
+      "description": "Added/modified global layout visuals not explicitly requested (fixed full-screen background image overlay and a styled footer in AppLayout).",
+      "reason": "REQ-19 lists specific high-visibility surfaces to adjust (TopNav, IntroSplash, DecoratedHeading, HelpBotPanel) and does not mention adding/changing a global background overlay layer or altering footer presentation.",
+      "evidence": [
+        "frontend/src/components/AppLayout.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/DecoratedHeading.tsx",
+    "frontend/src/components/HelpBotPanel.tsx",
+    "frontend/src/components/IntroSplash.tsx",
+    "frontend/src/components/TopNav.tsx",
+    "frontend/src/index.css",
+    "project_state.json"
+  ]
+}

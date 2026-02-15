@@ -1,0 +1,61 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Theme refresh to match reference site (Tailwind/Shadcn tokens + key surface styling)",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "summary": "Update global light/dark theme CSS variable tokens in frontend/src/index.css so the new palette propagates consistently across the app while preserving RTL behavior.",
+      "acceptanceCriteria": [
+        "frontend/src/index.css updates the existing :root and .dark CSS variable tokens (e.g., --background, --foreground, --card, --primary, --accent, --muted, --border, --ring) to a new palette intended to match the reference site.",
+        "No hard-coded hex colors are introduced in components for theming; components continue to rely on the existing Tailwind token classes (bg-background, text-foreground, bg-card, text-primary, etc.).",
+        "The app remains readable (sufficient contrast) across major UI surfaces: TopNav, IntroSplash, section cards, Pros/Cons cards, simulator controls/outputs, videos gallery, and help bot panel, in both light and dark modes.",
+        "RTL layout and Arabic content remain unchanged (direction: rtl still applies, and no layout regressions are introduced)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the existing shadcn/ui-compatible Tailwind theme tokens (OKLCH CSS variables) for :root and .dark (background/foreground/card/popover/primary/secondary/muted/accent/destructive/border/input/ring/chart-*) to a palette that closely matches the reference site, while keeping the existing RTL base styles (direction: rtl, text-align: right) unchanged. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Refine styling of TopNav, IntroSplash, DecoratedHeading, and HelpBotPanel to align with the new theme using only Tailwind classes and existing theme tokens.",
+      "acceptanceCriteria": [
+        "TopNav visually matches the updated theme (background translucency, borders, hover states) and remains sticky and usable on desktop and mobile.",
+        "IntroSplash background gradient uses updated token-based colors (from-background/via-accent/to-background or equivalent), and the CTA button styling remains consistent with the new primary color.",
+        "DecoratedHeading continues to use the existing structure but its accent elements (icon container, gradient bar) reflect the updated palette and keep strong visual hierarchy in RTL.",
+        "HelpBotPanel trigger button and panel header/body styling align with updated theme tokens (primary/accent/card/border) and remain readable and accessible."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TopNav.tsx",
+          "operation": "modify",
+          "description": "Adjust TopNav styling to better match the new theme (token-based translucency, border weight/opacity, hover/focus states, and shadow) while keeping existing sticky behavior and RTL-friendly layout unchanged; use only Tailwind classes referencing existing theme tokens. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/IntroSplash.tsx",
+          "operation": "modify",
+          "description": "Refine IntroSplash gradient/background treatment and CTA button presentation using only token-based Tailwind classes (e.g., background/primary/accent/muted) to align with the updated palette; do not change copy/content or the generated asset references. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/DecoratedHeading.tsx",
+          "operation": "modify",
+          "description": "Update DecoratedHeading accent elements (icon container background, icon color emphasis, gradient bar) to reflect the new palette using Tailwind token classes only, preserving the existing RTL structure and visual hierarchy. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/HelpBotPanel.tsx",
+          "operation": "modify",
+          "description": "Align HelpBotPanel trigger button, panel container, and header/body styling with the updated theme tokens (primary/accent/card/border/ring) using Tailwind classes only; ensure readable contrast for suggested questions and results, and keep positioning/RTL text alignment unchanged. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/AppLayout.tsx",
+          "operation": "modify",
+          "description": "Tweak layout-level surfaces that influence perceived theme (e.g., footer background translucency and borders) to harmonize with the updated palette using token-based Tailwind classes only, without changing layout structure or RTL behavior. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

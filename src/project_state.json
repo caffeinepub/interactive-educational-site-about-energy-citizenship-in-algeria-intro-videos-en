@@ -1,0 +1,237 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 13,
+  "summary": "مشروع موقع/تطبيق تعليمي تفاعلي حول تقرير \"الطاقة والمواطنة\" في الجزائر بواجهة عربية (RTL)، مع Intro، قسم فيديوهات، محاكيات لأنواع الطاقة، وبوت/مساعد، مع طلب جديد لتغيير ألوان/الثيم ليطابق تصميم موقع مرجعي محدد (الرابط المقدم)، إضافة لتحسين تمييز العناوين وإزالة عبارة \"صنع بواسطة caffeine ai\".",
+  "architectural_notes": [
+    "المشروع عبارة عن موقع/تطبيق ويب تعليمي تفاعلي يركز على موضوع الطاقة والمواطنة في الجزائر ويضم وسائط (فيديو) ومحاكاة تفاعلية.",
+    "اعتماد دعم اللغة العربية وRTL عبر نظام i18n وخيارات اتجاه الصفحة (dir=rtl) وخطوط عربية مناسبة.",
+    "تنظيم قسم الفيديوهات ليعرض الفيديوهات مُصنَّفة حسب نوع الطاقة (Oil/Gas, Coal, Solar, Wind, Hydro, Geothermal) مع إمكانية ربط عدة فيديوهات لكل نوع.",
+    "اعتماد موقع مرجعي (URL) كمصدر للثيم: استخراج لوحة الألوان/الخلفيات/أنماط الأزرار والبطاقات والخطوط قدر الإمكان لتقليد الشكل العام."
+  ],
+  "known_issues": [
+    "قسم الفيديوهات لا يظهر/لا يعمل حالياً كما هو متوقع (مشاكل عرض/تضمين الفيديو).",
+    "المستخدم يريد حذف جميع الفيديوهات الحالية لأنها لا تعمل واستبدالها بفيديوهات جديدة حسب نوع الطاقة.",
+    "المستخدم طلب إضافة 3 فيديوهات لكن لم يزوّد روابط/ملفات الفيديو بعد؛ يلزم تزويد URLs أو ملفات MP4 ومساراتها لإتمام الإضافة وتصنيفها حسب نوع الطاقة."
+  ],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-multi-section-educational-web-app-english-ui-that-presents-the-provided-report-content-in-a-clear-structure-1-energy-overview-and-classification-non-renewable-vs-renewable-2-citizenship-dimensions-3-the-relationship-between-energy-and-citizenship-energy-citizenship-4-energy-citizenship-in-algeria-current-reality-challenges-opportunities-and-5-final-conclusion-emphasizing-that-energy-citizenship-enables-successful-energy-transition-in-algeria",
+      "title": "Create a multi-section educational web app (English UI) that presents the provided report content in a clear structure: (1) Energy overview and classification (non-renewable vs renewable), (2) Citizenship dimensions, (3) The relationship between energy and citizenship (“energy citizenship”), (4) Energy & citizenship in Algeria (current reality + challenges + opportunities), and (5) Final conclusion emphasizing that energy citizenship enables successful energy transition in Algeria.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-entry-intro-experience-shown-on-first-visit-in-a-session-a-splash-landing-intro-that-introduces-the-project-topic-energy-citizenship-in-algeria-and-provides-a-clear-call-to-action-to-enter-the-main-content",
+      "title": "Add an entry intro experience shown on first visit in a session (a splash/landing intro) that introduces the project topic (Energy & Citizenship in Algeria) and provides a clear call-to-action to enter the main content.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-an-interactive-energy-types-area-where-each-energy-type-from-the-report-has-a-short-description-a-clearly-labeled-list-of-advantages-and-a-clearly-labeled-list-of-disadvantages",
+      "title": "Implement an interactive “Energy Types” area where each energy type from the report has: a short description, a clearly labeled list of advantages, and a clearly labeled list of disadvantages.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-interactive-simulators-for-the-six-energy-types-oil-gas-coal-solar-wind-hydro-geothermal-each-simulator-must-include-at-least-2-user-controlled-inputs-sliders-toggles-and-must-update-at-least-2-live-outputs-e-g-estimated-energy-output-cost-index-emissions-index-reliability-index-keep-the-simulators-educational-illustrative-not-scientifically-exact-and-clearly-label-outputs-as-estimated-illustrative",
+      "title": "Add interactive simulators for the six energy types (oil/gas, coal, solar, wind, hydro, geothermal). Each simulator must include at least 2 user-controlled inputs (sliders/toggles) and must update at least 2 live outputs (e.g., estimated energy output, cost index, emissions index, reliability index). Keep the simulators educational (illustrative), not scientifically exact, and clearly label outputs as “estimated/illustrative”.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-videos-section-that-can-display-multiple-educational-videos-related-to-the-report-themes-support-embedding-via-user-provided-video-urls-e-g-youtube-vimeo-embed-or-direct-video-links-if-no-urls-are-configured-yet-show-a-clear-empty-state-message-instructing-where-to-add-them-in-the-project-configuration",
+      "title": "Add a “Videos” section that can display multiple educational videos related to the report themes. Support embedding via user-provided video URLs (e.g., YouTube/Vimeo embed or direct video links). If no URLs are configured yet, show a clear empty-state message instructing where to add them in the project configuration.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-choose-and-apply-a-coherent-visual-theme-appropriate-for-an-educational-sustainability-civics-project-avoid-blue-purple-define-consistent-color-palette-typography-hierarchy-spacing-and-component-styles-across-the-entire-app-including-intro-sections-cards-and-simulator-ui",
+      "title": "Choose and apply a coherent visual theme appropriate for an educational sustainability/civics project (avoid blue/purple). Define consistent color palette, typography hierarchy, spacing, and component styles across the entire app, including intro, sections, cards, and simulator UI.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-include-static-visual-assets-stored-in-frontend-public-assets-generated-to-support-the-educational-presentation-an-intro-hero-illustration-six-energy-type-icons-and-a-minimal-algeria-themed-illustration-map-style-background",
+      "title": "Generate and include static visual assets (stored in frontend/public/assets/generated) to support the educational presentation: an intro hero illustration, six energy-type icons, and a minimal Algeria-themed illustration/map-style background.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-localize-the-entire-ui-to-arabic-and-enable-rtl-layout-across-the-app-including-navigation-labels-intro-splash-text-section-titles-descriptions-energy-type-names-descriptions-video-section-text-empty-states-and-footer-text",
+      "title": "Localize the entire UI to Arabic and enable RTL layout across the app, including navigation labels, intro splash text, section titles/descriptions, energy type names/descriptions, video section text, empty states, and footer text.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-fix-the-videos-section-so-configured-videos-reliably-display-and-play-and-add-clear-error-empty-states-in-arabic-when-a-video-url-is-invalid-or-a-local-mp4-file-is-missing",
+      "title": "Fix the Videos section so configured videos reliably display and play, and add clear error/empty states in Arabic when a video URL is invalid or a local MP4 file is missing.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-app-assistant-bot-non-llm-that-can-explain-the-project-content-and-answer-common-questions-by-searching-a-predefined-arabic-q-a-knowledge-base-derived-from-the-existing-report-sections-energy-types-simulators-and-videos-guidance",
+      "title": "Add an in-app assistant bot (non-LLM) that can explain the project content and answer common questions by searching a predefined Arabic Q&A knowledge base derived from the existing report sections, energy types, simulators, and videos guidance.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-the-visual-distinction-of-headings-throughout-the-app-by-adding-consistent-decorative-styling-e-g-accent-bar-icon-badge-or-divider-treatment-for-section-titles-and-subsection-headings-while-keeping-readability-in-arabic-rtl",
+      "title": "Improve the visual distinction of headings throughout the app by adding consistent decorative styling (e.g., accent bar, icon, badge, or divider treatment) for section titles and subsection headings, while keeping readability in Arabic RTL.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-any-visible-built-with-caffeine-ai-made-by-caffeine-ai-attribution-from-the-ui-including-the-footer-link-and-text-without-breaking-layout",
+      "title": "Remove any visible “Built with … caffeine.ai” / “Made by Caffeine AI” attribution from the UI (including the footer link and text) without breaking layout.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-currently-configured-videos-from-the-app-s-video-configuration-frontend-src-content-videos-ts-since-the-user-reported-they-do-not-work",
+      "title": "Remove all currently configured videos from the app’s video configuration (frontend/src/content/videos.ts), since the user reported they do not work.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-support-for-classifying-videos-by-energy-type-in-the-videos-configuration-and-ui-so-videos-can-be-organized-by-energy-type-use-the-existing-energy-type-ids-from-frontend-src-content-energytypes-ts-oil-gas-coal-solar-wind-hydro-geothermal",
+      "title": "Add support for classifying videos by energy type in the videos configuration and UI, so videos can be organized “by energy type”. Use the existing energy type ids from frontend/src/content/energyTypes.ts (oil-gas, coal, solar, wind, hydro, geothermal).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-provide-a-clear-maintainable-place-in-frontend-src-content-videos-ts-for-the-user-to-paste-the-new-working-video-urls-for-each-energy-type-including-examples-for-youtube-vimeo-embed-urls-and-direct-mp4-urls-while-keeping-the-app-s-ui-language-arabic-rtl",
+      "title": "Provide a clear, maintainable place in frontend/src/content/videos.ts for the user to paste the new working video URLs “for each energy type”, including examples for YouTube/Vimeo embed URLs and direct MP4 URLs, while keeping the app’s UI language Arabic (RTL).",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-s-3-new-videos-to-the-app-by-populating-frontend-src-content-videos-ts-with-3-video-entries-each-with-url-and-when-known-energytypeid-using-one-of-oil-gas-coal-solar-wind-hydro-geothermal-if-the-user-has-not-provided-the-actual-urls-and-or-energy-type-classification-yet-add-a-clearly-marked-todo-block-in-videos-ts-with-3-placeholder-objects-commented-out-so-the-user-can-paste-the-urls-and-set-energytypeid-without-changing-any-other-code",
+      "title": "Add the user’s 3 new videos to the app by populating `frontend/src/content/videos.ts` with 3 `Video` entries (each with `url` and, when known, `energyTypeId` using one of: `oil-gas | coal | solar | wind | hydro | geothermal`). If the user has not provided the actual URLs and/or energy type classification yet, add a clearly marked TODO block in `videos.ts` with 3 placeholder objects (commented out) so the user can paste the URLs and set `energyTypeId` without changing any other code.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-global-color-theme-light-dark-to-closely-match-the-look-and-feel-of-the-provided-reference-site-https-ecyknw7fo3zty-ok-kimi-link-fbclid-pat01duap-4yzlehrua2flbqixmabzcnrjbmfwcf9pza81njcwnjczndmznti0mjcaaadmuj-nctepcwdbsvyuawcrjlue3-xapo-gj-lgenu-v-kuam0nh5yjm7y3qq-aem-q9klbwgfpum9uo-4et5acw-implement-this-by-updating-the-existing-tailwind-shadcn-theme-tokens-css-variables-in-frontend-src-index-css-so-the-new-palette-propagates-consistently-across-all-existing-ui-components-nav-cards-headings-buttons-simulator-panels-videos-gallery-help-bot-keep-rtl-behavior-unchanged",
+      "title": "Update the app’s global color theme (light + dark) to closely match the look-and-feel of the provided reference site: https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw . Implement this by updating the existing Tailwind/Shadcn theme tokens (CSS variables) in frontend/src/index.css so the new palette propagates consistently across all existing UI components (nav, cards, headings, buttons, simulator panels, videos gallery, help bot). Keep RTL behavior unchanged.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-adjust-key-high-visibility-ui-surfaces-to-align-with-the-new-theme-styling-without-changing-features-or-content-top-navigation-bar-intro-splash-gradient-background-treatment-decorated-section-headings-and-the-floating-help-bot-trigger-panel-use-only-tailwind-classes-and-existing-theme-tokens-so-the-styling-matches-the-updated-palette-and-remains-consistent",
+      "title": "Adjust key high-visibility UI surfaces to align with the new theme styling (without changing features or content): Top navigation bar, Intro splash gradient/background treatment, decorated section headings, and the floating help-bot trigger/panel. Use only Tailwind classes and existing theme tokens so the styling matches the updated palette and remains consistent.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "إنشاء موقع/تطبيق يعرض محتوى التقرير (الطاقة، المواطنة، المواطنة الطاقية، واقع الجزائر) بشكل منظم كأقسام/صفحات",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "إضافة Intro/صفحة ترحيبية عند دخول الموقع (splash/landing) تمهّد لموضوع المشروع",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "دمج/إضافة فيديوهات داعمة داخل الموقع مرتبطة بمحاور التقرير",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "تطوير محاكيات تفاعلية لأنواع الطاقة المذكورة (نفط/غاز، فحم، شمس، رياح، مائية، جوفية) مع عرض الإيجابيات والسلبيات لكل نوع",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "تحويل واجهة المستخدم إلى اللغة العربية مع دعم RTL وتوطين النصوص",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "إضافة بوت/مساعد داخل الموقع يشرح محتوى المشروع ويجيب عن الأسئلة المتعلقة به",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "تحسين تصميم العناوين/Headings بإضافة عناصر تميّزها بصرياً (ستايل/أيقونات/فواصل) لزيادة الوضوح",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "إزالة عبارة/وسم \"صنع بواسطة caffeine ai\" من واجهة الموقع/التذييل",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add educational videos to the app by populating the configured videos list and ensuring each configured video reliably renders in the Videos section (MP4 files from the public assets path and/or YouTube/Vimeo embed URLs).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "حذف/إزالة جميع الفيديوهات الحالية غير العاملة واستبدالها بفيديوهات جديدة مُنظَّمة/مُصنَّفة حسب نوع الطاقة (لكل نوع طاقة فيديو/فيديوهات مرتبطة به)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "تغيير ألوان/الثيم العام للموقع ليطابق (أو يكون قريباً جداً من) تصميم وألوان الموقع المرجعي الذي قدّمه المستخدم عبر الرابط.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Interactive educational site about Energy & Citizenship in Algeria (intro + videos + energy simulators)",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

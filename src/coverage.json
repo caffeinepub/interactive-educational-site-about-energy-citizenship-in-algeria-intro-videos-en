@@ -1,0 +1,61 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-15T17:43:40.371Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-18",
+        "summary": "Update the app’s global color theme (light + dark) to closely match the look-and-feel of the provided reference site: https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw . Implement this by updating the existing Tailwind/Shadcn theme tokens (CSS variables) in frontend/src/index.css so the new palette propagates consistently across all existing UI components (nav, cards, headings, buttons, simulator panels, videos gallery, help bot). Keep RTL behavior unchanged.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-19",
+        "summary": "Adjust key high-visibility UI surfaces to align with the new theme styling (without changing features or content): Top navigation bar, Intro splash gradient/background treatment, decorated section headings, and the floating help-bot trigger/panel. Use only Tailwind classes and existing theme tokens so the styling matches the updated palette and remains consistent.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/TopNav.tsx",
+          "frontend/src/components/IntroSplash.tsx",
+          "frontend/src/components/DecoratedHeading.tsx",
+          "frontend/src/components/HelpBotPanel.tsx",
+          "frontend/src/components/AppLayout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/TopNav.tsx",
+          "frontend/src/components/IntroSplash.tsx",
+          "frontend/src/components/DecoratedHeading.tsx",
+          "frontend/src/components/HelpBotPanel.tsx",
+          "frontend/src/components/AppLayout.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/AppLayout.tsx",
+    "frontend/src/components/DecoratedHeading.tsx",
+    "frontend/src/components/HelpBotPanel.tsx",
+    "frontend/src/components/IntroSplash.tsx",
+    "frontend/src/components/TopNav.tsx",
+    "frontend/src/index.css",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-app-s-global-color-theme-light-dark-to-closely-match-the-look-and-feel-of-the-provided-reference-site-https-ecyknw7fo3zty-ok-kimi-link-fbclid-pat01duap-4yzlehrua2flbqixmabzcnrjbmfwcf9pza81njcwnjczndmznti0mjcaaadmuj-nctepcwdbsvyuawcrjlue3-xapo-gj-lgenu-v-kuam0nh5yjm7y3qq-aem-q9klbwgfpum9uo-4et5acw-implement-this-by-updating-the-existing-tailwind-shadcn-theme-tokens-css-variables-in-frontend-src-index-css-so-the-new-palette-propagates-consistently-across-all-existing-ui-components-nav-cards-headings-buttons-simulator-panels-videos-gallery-help-bot-keep-rtl-behavior-unchanged",
+      "featureTitle": "Update the app’s global color theme (light + dark) to closely match the look-and-feel of the provided reference site: https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw . Implement this by updating the existing Tailwind/Shadcn theme tokens (CSS variables) in frontend/src/index.css so the new palette propagates consistently across all existing UI components (nav, cards, headings, buttons, simulator panels, videos gallery, help bot). Keep RTL behavior unchanged.",
+      "files": [
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-18"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-adjust-key-high-visibility-ui-surfaces-to-align-with-the-new-theme-styling-without-changing-features-or-content-top-navigation-bar-intro-splash-gradient-background-treatment-decorated-section-headings-and-the-floating-help-bot-trigger-panel-use-only-tailwind-classes-and-existing-theme-tokens-so-the-styling-matches-the-updated-palette-and-remains-consistent",
+      "featureTitle": "Adjust key high-visibility UI surfaces to align with the new theme styling (without changing features or content): Top navigation bar, Intro splash gradient/background treatment, decorated section headings, and the floating help-bot trigger/panel. Use only Tailwind classes and existing theme tokens so the styling matches the updated palette and remains consistent.",
+      "files": [
+        "frontend/src/components/AppLayout.tsx",
+        "frontend/src/components/DecoratedHeading.tsx",
+        "frontend/src/components/HelpBotPanel.tsx",
+        "frontend/src/components/IntroSplash.tsx",
+        "frontend/src/components/TopNav.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

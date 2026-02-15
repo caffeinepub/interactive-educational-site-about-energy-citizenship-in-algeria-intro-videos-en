@@ -1,2 +1,3 @@
-# interactive-educational-site-about-energy-citizenship-in-algeria-intro-videos-en
-Exported from Caffeine project: Interactive educational site about Energy &amp; Citizenship in Algeria (intro + videos + energy simulators)
+## 
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

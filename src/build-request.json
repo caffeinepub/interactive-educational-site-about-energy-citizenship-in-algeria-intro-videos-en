@@ -1,0 +1,70 @@
+{
+  "kind": "build_request",
+  "title": "Update app color theme to closely match the provided reference site",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-18",
+      "text": "Update the app’s global color theme (light + dark) to closely match the look-and-feel of the provided reference site: https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw . Implement this by updating the existing Tailwind/Shadcn theme tokens (CSS variables) in frontend/src/index.css so the new palette propagates consistently across all existing UI components (nav, cards, headings, buttons, simulator panels, videos gallery, help bot). Keep RTL behavior unchanged.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-4"
+        ],
+        "quotes": [
+          "هل يمكنك أن تغير الوان و تجعلها نتا هدا موقع https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/src/index.css updates the existing :root and .dark CSS variable tokens (e.g., --background, --foreground, --card, --primary, --accent, --muted, --border, --ring) to a new palette intended to match the reference site.",
+        "No hard-coded hex colors are introduced in components for theming; components continue to rely on the existing Tailwind token classes (bg-background, text-foreground, bg-card, text-primary, etc.).",
+        "The app remains readable (sufficient contrast) across major UI surfaces: TopNav, IntroSplash, section cards, Pros/Cons cards, simulator controls/outputs, videos gallery, and help bot panel, in both light and dark modes.",
+        "RTL layout and Arabic content remain unchanged (direction: rtl still applies, and no layout regressions are introduced)."
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "text": "Adjust key high-visibility UI surfaces to align with the new theme styling (without changing features or content): Top navigation bar, Intro splash gradient/background treatment, decorated section headings, and the floating help-bot trigger/panel. Use only Tailwind classes and existing theme tokens so the styling matches the updated palette and remains consistent.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "recent-4"
+        ],
+        "quotes": [
+          "هل يمكنك أن تغير الوان و تجعلها نتا هدا موقع https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw"
+        ]
+      },
+      "acceptanceCriteria": [
+        "TopNav visually matches the updated theme (background translucency, borders, hover states) and remains sticky and usable on desktop and mobile.",
+        "IntroSplash background gradient uses updated token-based colors (from-background/via-accent/to-background or equivalent), and the CTA button styling remains consistent with the new primary color.",
+        "DecoratedHeading continues to use the existing structure but its accent elements (icon container, gradient bar) reflect the updated palette and keep strong visual hierarchy in RTL.",
+        "HelpBotPanel trigger button and panel header/body styling align with updated theme tokens (primary/accent/card/border) and remain readable and accessible."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (read-only UI component sources); only compose and style through app-level components and theme tokens.",
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx (immutable paths).",
+    "Keep the current app language and RTL layout behavior unchanged while updating the visual theme.",
+    "Do not introduce new backend logic; theming is a frontend-only change."
+  ],
+  "nonGoals": [
+    "Rebuilding the app to be identical pixel-for-pixel to the reference site (only a close thematic match is required).",
+    "Changing content structure, adding new sections/features, or rewriting Arabic text content as part of the theme update.",
+    "Adding new authentication providers or any third-party integrations."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

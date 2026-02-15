@@ -3,11 +3,15 @@ import { energyTypes } from '../content/energyTypes';
 import SimulatorPanel from '../components/SimulatorPanel';
 import DecoratedHeading from '../components/DecoratedHeading';
 
-export default function SimulatorsSection() {
+interface SimulatorsSectionProps {
+  themeVariant?: string;
+}
+
+export default function SimulatorsSection({ themeVariant }: SimulatorsSectionProps) {
   const [selectedSimulator, setSelectedSimulator] = useState(energyTypes[0].id);
 
   return (
-    <section id="simulators" className="scroll-mt-20 mb-20">
+    <section id="simulators" className={`scroll-mt-20 mb-20 ${themeVariant || ''}`}>
       <div className="bg-card rounded-2xl p-8 md:p-12 shadow-lg">
         <DecoratedHeading>
           المحاكيات التفاعلية للطاقة

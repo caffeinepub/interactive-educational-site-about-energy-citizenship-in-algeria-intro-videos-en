@@ -93,6 +93,152 @@
         @apply font-bold;
         letter-spacing: -0.02em;
     }
+
+    /* Per-section theme variants - Light mode */
+    .section-theme-sky {
+        --primary: 0.58 0.18 220;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.58 0.18 220;
+        --accent: 0.94 0.02 220;
+        --accent-foreground: 0.25 0.03 220;
+        --card: 0.99 0.005 220;
+    }
+
+    .section-theme-emerald {
+        --primary: 0.60 0.16 160;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.60 0.16 160;
+        --accent: 0.94 0.02 160;
+        --accent-foreground: 0.25 0.03 160;
+        --card: 0.99 0.005 160;
+    }
+
+    .section-theme-amber {
+        --primary: 0.62 0.18 70;
+        --primary-foreground: 0.15 0.02 70;
+        --ring: 0.62 0.18 70;
+        --accent: 0.94 0.02 70;
+        --accent-foreground: 0.25 0.03 70;
+        --card: 0.99 0.005 70;
+    }
+
+    .section-theme-rose {
+        --primary: 0.58 0.20 10;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.58 0.20 10;
+        --accent: 0.94 0.02 10;
+        --accent-foreground: 0.25 0.03 10;
+        --card: 0.99 0.005 10;
+    }
+
+    .section-theme-violet {
+        --primary: 0.56 0.22 290;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.56 0.22 290;
+        --accent: 0.94 0.02 290;
+        --accent-foreground: 0.25 0.03 290;
+        --card: 0.99 0.005 290;
+    }
+
+    .section-theme-teal {
+        --primary: 0.58 0.17 180;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.58 0.17 180;
+        --accent: 0.94 0.02 180;
+        --accent-foreground: 0.25 0.03 180;
+        --card: 0.99 0.005 180;
+    }
+
+    .section-theme-orange {
+        --primary: 0.60 0.20 40;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.60 0.20 40;
+        --accent: 0.94 0.02 40;
+        --accent-foreground: 0.25 0.03 40;
+        --card: 0.99 0.005 40;
+    }
+
+    .section-theme-indigo {
+        --primary: 0.54 0.21 270;
+        --primary-foreground: 0.99 0.0 0;
+        --ring: 0.54 0.21 270;
+        --accent: 0.94 0.02 270;
+        --accent-foreground: 0.25 0.03 270;
+        --card: 0.99 0.005 270;
+    }
+
+    /* Per-section theme variants - Dark mode */
+    .dark .section-theme-sky {
+        --primary: 0.68 0.20 220;
+        --primary-foreground: 0.15 0.02 220;
+        --ring: 0.68 0.20 220;
+        --accent: 0.28 0.03 220;
+        --accent-foreground: 0.96 0.01 220;
+        --card: 0.18 0.02 220;
+    }
+
+    .dark .section-theme-emerald {
+        --primary: 0.68 0.18 160;
+        --primary-foreground: 0.15 0.02 160;
+        --ring: 0.68 0.18 160;
+        --accent: 0.28 0.03 160;
+        --accent-foreground: 0.96 0.01 160;
+        --card: 0.18 0.02 160;
+    }
+
+    .dark .section-theme-amber {
+        --primary: 0.70 0.20 70;
+        --primary-foreground: 0.15 0.02 70;
+        --ring: 0.70 0.20 70;
+        --accent: 0.28 0.03 70;
+        --accent-foreground: 0.96 0.01 70;
+        --card: 0.18 0.02 70;
+    }
+
+    .dark .section-theme-rose {
+        --primary: 0.66 0.22 10;
+        --primary-foreground: 0.15 0.02 10;
+        --ring: 0.66 0.22 10;
+        --accent: 0.28 0.03 10;
+        --accent-foreground: 0.96 0.01 10;
+        --card: 0.18 0.02 10;
+    }
+
+    .dark .section-theme-violet {
+        --primary: 0.66 0.24 290;
+        --primary-foreground: 0.15 0.02 290;
+        --ring: 0.66 0.24 290;
+        --accent: 0.28 0.03 290;
+        --accent-foreground: 0.96 0.01 290;
+        --card: 0.18 0.02 290;
+    }
+
+    .dark .section-theme-teal {
+        --primary: 0.68 0.19 180;
+        --primary-foreground: 0.15 0.02 180;
+        --ring: 0.68 0.19 180;
+        --accent: 0.28 0.03 180;
+        --accent-foreground: 0.96 0.01 180;
+        --card: 0.18 0.02 180;
+    }
+
+    .dark .section-theme-orange {
+        --primary: 0.68 0.22 40;
+        --primary-foreground: 0.15 0.02 40;
+        --ring: 0.68 0.22 40;
+        --accent: 0.28 0.03 40;
+        --accent-foreground: 0.96 0.01 40;
+        --card: 0.18 0.02 40;
+    }
+
+    .dark .section-theme-indigo {
+        --primary: 0.64 0.23 270;
+        --primary-foreground: 0.15 0.02 270;
+        --ring: 0.64 0.23 270;
+        --accent: 0.28 0.03 270;
+        --accent-foreground: 0.96 0.01 270;
+        --card: 0.18 0.02 270;
+    }
 }
 
 @layer utilities {

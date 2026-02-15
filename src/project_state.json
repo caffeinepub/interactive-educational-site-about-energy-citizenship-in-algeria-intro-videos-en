@@ -1,12 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
+  "projectStateVersion": 15,
   "summary": "مشروع موقع/تطبيق تعليمي تفاعلي حول تقرير \"الطاقة والمواطنة\" في الجزائر بواجهة عربية (RTL)، مع Intro، قسم فيديوهات، محاكيات لأنواع الطاقة، وبوت/مساعد، مع طلب جديد لتغيير ألوان/الثيم ليطابق تصميم موقع مرجعي محدد (الرابط المقدم)، إضافة لتحسين تمييز العناوين وإزالة عبارة \"صنع بواسطة caffeine ai\".",
   "architectural_notes": [
     "المشروع عبارة عن موقع/تطبيق ويب تعليمي تفاعلي يركز على موضوع الطاقة والمواطنة في الجزائر ويضم وسائط (فيديو) ومحاكاة تفاعلية.",
     "اعتماد دعم اللغة العربية وRTL عبر نظام i18n وخيارات اتجاه الصفحة (dir=rtl) وخطوط عربية مناسبة.",
     "تنظيم قسم الفيديوهات ليعرض الفيديوهات مُصنَّفة حسب نوع الطاقة (Oil/Gas, Coal, Solar, Wind, Hydro, Geothermal) مع إمكانية ربط عدة فيديوهات لكل نوع.",
-    "اعتماد موقع مرجعي (URL) كمصدر للثيم: استخراج لوحة الألوان/الخلفيات/أنماط الأزرار والبطاقات والخطوط قدر الإمكان لتقليد الشكل العام."
+    "اعتماد موقع مرجعي (URL) كمصدر للثيم: استخراج لوحة الألوان/الخلفيات/أنماط الأزرار والبطاقات والخطوط قدر الإمكان لتقليد الشكل العام.",
+    "إضافة تمييز لوني لكل قسم (Section-based theming) عبر تعريف ألوان/خلفيات خاصة بكل قسم مع الحفاظ على توكنز/ثيم عام موحّد لضمان الاتساق."
   ],
   "known_issues": [
     "قسم الفيديوهات لا يظهر/لا يعمل حالياً كما هو متوقع (مشاكل عرض/تضمين الفيديو).",
@@ -158,6 +159,30 @@
         "REQ-19"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-implement-a-per-section-theming-system-so-each-major-page-section-uses-a-distinct-accent-color-and-optionally-a-subtle-tinted-background-while-the-overall-ui-remains-visually-cohesive-and-rtl-behavior-stays-unchanged",
+      "title": "Implement a per-section theming system so each major page section uses a distinct accent color (and optionally a subtle tinted background), while the overall UI remains visually cohesive and RTL behavior stays unchanged.",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-small-maintainable-palette-of-section-theme-variants-in-frontend-src-index-css-e-g-6-8-variants-that-define-local-theme-token-overrides-for-a-subtree-at-minimum-primary-primary-foreground-ring-optionally-accent-and-accent-foreground-with-matching-variants-for-dark-mode",
+      "title": "Add a small, maintainable palette of section theme variants in frontend/src/index.css (e.g., 6–8 variants) that define local theme token overrides for a subtree (at minimum: --primary, --primary-foreground, --ring; optionally: --accent and --accent-foreground), with matching variants for dark mode.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-the-new-per-section-theme-variants-to-existing-sections-so-that-each-section-s-card-panel-styling-and-decoratedheading-accent-automatically-reflect-the-section-s-assigned-variant",
+      "title": "Apply the new per-section theme variants to existing sections so that each section’s card/panel styling and DecoratedHeading accent automatically reflect the section’s assigned variant.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -226,6 +251,12 @@
     {
       "id": "AR-11",
       "summary": "تغيير ألوان/الثيم العام للموقع ليطابق (أو يكون قريباً جداً من) تصميم وألوان الموقع المرجعي الذي قدّمه المستخدم عبر الرابط.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "تطبيق نظام ألوان متنوع بحيث تكون ألوان/خلفيات مختلفة من قسم إلى آخر (تمييز بصري لكل Section) مع الحفاظ على تناسق الثيم العام وRTL",
       "reqIds": [],
       "status": "pending"
     }

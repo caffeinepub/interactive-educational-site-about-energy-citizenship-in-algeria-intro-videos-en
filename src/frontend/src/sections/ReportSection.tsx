@@ -13,11 +13,12 @@ interface ReportSectionProps {
   title: string;
   content: ContentBlock[];
   highlight?: boolean;
+  themeVariant?: string;
 }
 
-export default function ReportSection({ id, title, content, highlight }: ReportSectionProps) {
+export default function ReportSection({ id, title, content, highlight, themeVariant }: ReportSectionProps) {
   return (
-    <section id={id} className="scroll-mt-20 mb-20">
+    <section id={id} className={`scroll-mt-20 mb-20 ${themeVariant || ''}`}>
       <div className={`${highlight ? 'bg-primary/5 border-2 border-primary/20' : 'bg-card'} rounded-2xl p-8 md:p-12 shadow-lg`}>
         <DecoratedHeading>
           {title}

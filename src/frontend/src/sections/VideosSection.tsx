@@ -1,9 +1,13 @@
 import VideosGallery from '../components/VideosGallery';
 import DecoratedHeading from '../components/DecoratedHeading';
 
-export default function VideosSection() {
+interface VideosSectionProps {
+  themeVariant?: string;
+}
+
+export default function VideosSection({ themeVariant }: VideosSectionProps) {
   return (
-    <section id="videos" className="scroll-mt-20 mb-20">
+    <section id="videos" className={`scroll-mt-20 mb-20 ${themeVariant || ''}`}>
       <div className="bg-card rounded-2xl p-8 md:p-12 shadow-lg">
         <DecoratedHeading>
           الفيديوهات التعليمية

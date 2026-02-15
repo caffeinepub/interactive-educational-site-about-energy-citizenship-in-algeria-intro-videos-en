@@ -1,70 +1,78 @@
 {
   "kind": "build_request",
-  "title": "Update app color theme to closely match the provided reference site",
+  "title": "Add per-section color variety while keeping a cohesive global theme",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-18",
-      "text": "Update the app’s global color theme (light + dark) to closely match the look-and-feel of the provided reference site: https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw . Implement this by updating the existing Tailwind/Shadcn theme tokens (CSS variables) in frontend/src/index.css so the new palette propagates consistently across all existing UI components (nav, cards, headings, buttons, simulator panels, videos gallery, help bot). Keep RTL behavior unchanged.",
+      "id": "REQ-20",
+      "text": "Implement a per-section theming system so each major page section uses a distinct accent color (and optionally a subtle tinted background), while the overall UI remains visually cohesive and RTL behavior stays unchanged.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-4"
+          "msg-4"
         ],
         "quotes": [
-          "هل يمكنك أن تغير الوان و تجعلها نتا هدا موقع https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw"
+          "نوع في الوان اريد ان تكون الوان مختلفة من قسم إلى اخر"
         ]
       },
       "acceptanceCriteria": [
-        "frontend/src/index.css updates the existing :root and .dark CSS variable tokens (e.g., --background, --foreground, --card, --primary, --accent, --muted, --border, --ring) to a new palette intended to match the reference site.",
-        "No hard-coded hex colors are introduced in components for theming; components continue to rely on the existing Tailwind token classes (bg-background, text-foreground, bg-card, text-primary, etc.).",
-        "The app remains readable (sufficient contrast) across major UI surfaces: TopNav, IntroSplash, section cards, Pros/Cons cards, simulator controls/outputs, videos gallery, and help bot panel, in both light and dark modes.",
-        "RTL layout and Arabic content remain unchanged (direction: rtl still applies, and no layout regressions are introduced)."
+        "Each major section (overview, energy-types, citizenship, relationship, algeria, simulators, videos, conclusion) displays a noticeably different accent color than adjacent sections.",
+        "The change is implemented via scoped CSS variable overrides (e.g., local overrides for theme tokens like --primary/--ring) so existing components that use theme tokens (e.g., text-primary, bg-primary, accent-primary) automatically inherit the section accent.",
+        "Light and dark mode both have appropriate section accent variants with readable contrast.",
+        "RTL layout, spacing, and typography are not broken or flipped by the changes."
       ]
     },
     {
-      "id": "REQ-19",
-      "text": "Adjust key high-visibility UI surfaces to align with the new theme styling (without changing features or content): Top navigation bar, Intro splash gradient/background treatment, decorated section headings, and the floating help-bot trigger/panel. Use only Tailwind classes and existing theme tokens so the styling matches the updated palette and remains consistent.",
+      "id": "REQ-21",
+      "text": "Add a small, maintainable palette of section theme variants in frontend/src/index.css (e.g., 6–8 variants) that define local theme token overrides for a subtree (at minimum: --primary, --primary-foreground, --ring; optionally: --accent and --accent-foreground), with matching variants for dark mode.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-4"
+          "msg-4"
         ],
         "quotes": [
-          "هل يمكنك أن تغير الوان و تجعلها نتا هدا موقع https://ecyknw7fo3zty.ok.kimi.link/?fbclid=PAT01DUAP-4YZleHRuA2FlbQIxMABzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAadMuj_NcTEPcwDBSvYuAwCrJLUe3-xApO-Gj-LgENU-v-KuAM0nH5yjM7y3QQ_aem_Q9KLBwgFpUm9Uo-4Et5ACw"
+          "نوع في الوان اريد ان تكون الوان مختلفة من قسم إلى اخر"
         ]
       },
       "acceptanceCriteria": [
-        "TopNav visually matches the updated theme (background translucency, borders, hover states) and remains sticky and usable on desktop and mobile.",
-        "IntroSplash background gradient uses updated token-based colors (from-background/via-accent/to-background or equivalent), and the CTA button styling remains consistent with the new primary color.",
-        "DecoratedHeading continues to use the existing structure but its accent elements (icon container, gradient bar) reflect the updated palette and keep strong visual hierarchy in RTL.",
-        "HelpBotPanel trigger button and panel header/body styling align with updated theme tokens (primary/accent/card/border) and remain readable and accessible."
+        "frontend/src/index.css contains clearly named section theme classes (or data-attribute selectors) that can be applied to a wrapper element to change the section accent color.",
+        "The variants include both light and dark overrides (e.g., via .dark .section-theme-* or equivalent), and all remain consistent with the app’s overall theme style.",
+        "No global theme tokens are removed; this only adds scoped overrides."
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Apply the new per-section theme variants to existing sections so that each section’s card/panel styling and DecoratedHeading accent automatically reflect the section’s assigned variant.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "نوع في الوان اريد ان تكون الوان مختلفة من قسم إلى اخر"
+        ]
+      },
+      "acceptanceCriteria": [
+        "frontend/src/sections/MainContent.tsx and each relevant section component apply a section theme wrapper (class or data attribute) per section instance.",
+        "DecoratedHeading (frontend/src/components/DecoratedHeading.tsx) continues to use theme tokens (e.g., primary) and therefore changes appearance per section without introducing hard-coded colors.",
+        "Components inside sections that rely on primary styling (e.g., buttons/selection states, simulator accent bars, etc.) visually match the section accent after the wrapper is applied.",
+        "No section content text is changed; only styling/appearance is updated."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under frontend/src/components/ui (read-only UI component sources); only compose and style through app-level components and theme tokens.",
-    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, or frontend/src/main.tsx (immutable paths).",
-    "Keep the current app language and RTL layout behavior unchanged while updating the visual theme.",
-    "Do not introduce new backend logic; theming is a frontend-only change."
+    "Do not edit any files under frontend/src/components/ui (read-only).",
+    "Do not modify the immutable frontend hook files listed in SYSTEM_CONTEXT.",
+    "Keep RTL behavior unchanged across the app.",
+    "Do not introduce new backend logic; this change is frontend-only styling."
   ],
   "nonGoals": [
-    "Rebuilding the app to be identical pixel-for-pixel to the reference site (only a close thematic match is required).",
-    "Changing content structure, adding new sections/features, or rewriting Arabic text content as part of the theme update.",
-    "Adding new authentication providers or any third-party integrations."
+    "Redesigning app layout or adding new sections/features beyond per-section color variation.",
+    "Changing or translating existing Arabic content.",
+    "Adding new images or replacing existing generated assets."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

@@ -1,59 +1,85 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Theme refresh to match reference site (Tailwind/Shadcn tokens + key surface styling)",
+  "title": "Per-section accent theme variants with scoped CSS token overrides",
   "requirements": [
     {
-      "id": "REQ-18",
-      "summary": "Update global light/dark theme CSS variable tokens in frontend/src/index.css so the new palette propagates consistently across the app while preserving RTL behavior.",
+      "id": "REQ-20",
+      "summary": "Introduce per-section theming via scoped CSS variable overrides so each major section gets its own accent while keeping a cohesive global theme and RTL unchanged.",
       "acceptanceCriteria": [
-        "frontend/src/index.css updates the existing :root and .dark CSS variable tokens (e.g., --background, --foreground, --card, --primary, --accent, --muted, --border, --ring) to a new palette intended to match the reference site.",
-        "No hard-coded hex colors are introduced in components for theming; components continue to rely on the existing Tailwind token classes (bg-background, text-foreground, bg-card, text-primary, etc.).",
-        "The app remains readable (sufficient contrast) across major UI surfaces: TopNav, IntroSplash, section cards, Pros/Cons cards, simulator controls/outputs, videos gallery, and help bot panel, in both light and dark modes.",
-        "RTL layout and Arabic content remain unchanged (direction: rtl still applies, and no layout regressions are introduced)."
+        "Each major section (overview, energy-types, citizenship, relationship, algeria, simulators, videos, conclusion) displays a noticeably different accent color than adjacent sections.",
+        "The change is implemented via scoped CSS variable overrides (e.g., local overrides for theme tokens like --primary/--ring) so existing components that use theme tokens (e.g., text-primary, bg-primary, accent-primary) automatically inherit the section accent.",
+        "Light and dark mode both have appropriate section accent variants with readable contrast.",
+        "RTL layout, spacing, and typography are not broken or flipped by the changes."
       ],
       "file_operations": [
         {
           "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update the existing shadcn/ui-compatible Tailwind theme tokens (OKLCH CSS variables) for :root and .dark (background/foreground/card/popover/primary/secondary/muted/accent/destructive/border/input/ring/chart-*) to a palette that closely matches the reference site, while keeping the existing RTL base styles (direction: rtl, text-align: right) unchanged. Verify the component's usage instructions before implementing."
+          "description": "Add scoped per-section theme variant selectors (classes or data-attributes) that locally override theme tokens (at least --primary, --primary-foreground, --ring; optionally also --accent/--accent-foreground and subtle --card tint) while leaving global tokens intact. Include dark-mode equivalents. Ensure overrides are subtree-scoped so components using Tailwind theme tokens automatically inherit per section."
+        },
+        {
+          "path": "frontend/src/sections/MainContent.tsx",
+          "operation": "modify",
+          "description": "Assign a distinct section theme variant to each major section instance (overview, energy-types, citizenship, relationship, algeria, simulators, videos, conclusion) by passing a theme wrapper class/data-attribute to section components/instances, ensuring adjacent sections differ and scroll/RTL behavior remains unchanged."
         }
       ]
     },
     {
-      "id": "REQ-19",
-      "summary": "Refine styling of TopNav, IntroSplash, DecoratedHeading, and HelpBotPanel to align with the new theme using only Tailwind classes and existing theme tokens.",
+      "id": "REQ-21",
+      "summary": "Define a small maintainable palette (6–8) of section theme variant classes in frontend/src/index.css with light/dark overrides for key theme tokens.",
       "acceptanceCriteria": [
-        "TopNav visually matches the updated theme (background translucency, borders, hover states) and remains sticky and usable on desktop and mobile.",
-        "IntroSplash background gradient uses updated token-based colors (from-background/via-accent/to-background or equivalent), and the CTA button styling remains consistent with the new primary color.",
-        "DecoratedHeading continues to use the existing structure but its accent elements (icon container, gradient bar) reflect the updated palette and keep strong visual hierarchy in RTL.",
-        "HelpBotPanel trigger button and panel header/body styling align with updated theme tokens (primary/accent/card/border) and remain readable and accessible."
+        "frontend/src/index.css contains clearly named section theme classes (or data-attribute selectors) that can be applied to a wrapper element to change the section accent color.",
+        "The variants include both light and dark overrides (e.g., via .dark .section-theme-* or equivalent), and all remain consistent with the app’s overall theme style.",
+        "No global theme tokens are removed; this only adds scoped overrides."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/TopNav.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Adjust TopNav styling to better match the new theme (token-based translucency, border weight/opacity, hover/focus states, and shadow) while keeping existing sticky behavior and RTL-friendly layout unchanged; use only Tailwind classes referencing existing theme tokens. Verify the component's usage instructions before implementing."
+          "description": "Create 6–8 clearly named section theme variant selectors (e.g., .section-theme-sky, .section-theme-emerald, etc.) that override --primary, --primary-foreground, --ring (and optionally --accent/--accent-foreground and a subtle --card tint) for the subtree. Add matching dark-mode overrides using .dark .section-theme-* (or equivalent). Keep existing global theme tokens and RTL base styles unchanged."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Apply section theme variants to existing sections so cards/panels and DecoratedHeading automatically reflect each section’s assigned accent without hard-coded colors.",
+      "acceptanceCriteria": [
+        "frontend/src/sections/MainContent.tsx and each relevant section component apply a section theme wrapper (class or data attribute) per section instance.",
+        "DecoratedHeading (frontend/src/components/DecoratedHeading.tsx) continues to use theme tokens (e.g., primary) and therefore changes appearance per section without introducing hard-coded colors.",
+        "Components inside sections that rely on primary styling (e.g., buttons/selection states, simulator accent bars, etc.) visually match the section accent after the wrapper is applied.",
+        "No section content text is changed; only styling/appearance is updated."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/sections/ReportSection.tsx",
+          "operation": "modify",
+          "description": "Add an optional prop (e.g., themeClass/themeVariant) and apply it to the outer <section> (or a wrapper) so the section subtree receives the scoped CSS token overrides. Ensure highlight styling continues to reference theme tokens (bg-primary/border-primary) so it adapts per section. Do not change any content rendering or RTL-related classes."
         },
         {
-          "path": "frontend/src/components/IntroSplash.tsx",
+          "path": "frontend/src/sections/EnergyTypesSection.tsx",
           "operation": "modify",
-          "description": "Refine IntroSplash gradient/background treatment and CTA button presentation using only token-based Tailwind classes (e.g., background/primary/accent/muted) to align with the updated palette; do not change copy/content or the generated asset references. Verify the component's usage instructions before implementing."
+          "description": "Accept an optional theme wrapper prop and apply it to the outer <section> so all internal elements using primary/accent tokens (selected states, headings, etc.) inherit the per-section accent automatically. Keep existing structure/RTL classes and text unchanged."
+        },
+        {
+          "path": "frontend/src/sections/SimulatorsSection.tsx",
+          "operation": "modify",
+          "description": "Accept an optional theme wrapper prop and apply it to the outer <section> so simulator selector states and SimulatorPanel styling that rely on primary/accent tokens reflect the section accent. Keep RTL behavior and content unchanged."
+        },
+        {
+          "path": "frontend/src/sections/VideosSection.tsx",
+          "operation": "modify",
+          "description": "Accept an optional theme wrapper prop and apply it to the outer <section> so DecoratedHeading and card styling inherit the section accent via tokens. Keep RTL behavior and text unchanged."
         },
         {
           "path": "frontend/src/components/DecoratedHeading.tsx",
           "operation": "modify",
-          "description": "Update DecoratedHeading accent elements (icon container background, icon color emphasis, gradient bar) to reflect the new palette using Tailwind token classes only, preserving the existing RTL structure and visual hierarchy. Verify the component's usage instructions before implementing."
+          "description": "Verify DecoratedHeading continues to use theme tokens (bg-primary/text-primary/gradient from-primary) without introducing hard-coded colors, so it automatically updates per section when wrapped by a theme variant. Keep layout/RTL-safe flex behavior unchanged."
         },
         {
-          "path": "frontend/src/components/HelpBotPanel.tsx",
+          "path": "frontend/src/sections/MainContent.tsx",
           "operation": "modify",
-          "description": "Align HelpBotPanel trigger button, panel container, and header/body styling with the updated theme tokens (primary/accent/card/border/ring) using Tailwind classes only; ensure readable contrast for suggested questions and results, and keep positioning/RTL text alignment unchanged. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/AppLayout.tsx",
-          "operation": "modify",
-          "description": "Tweak layout-level surfaces that influence perceived theme (e.g., footer background translucency and borders) to harmonize with the updated palette using token-based Tailwind classes only, without changing layout structure or RTL behavior. Verify the component's usage instructions before implementing."
+          "description": "Wire the per-section theme variants by passing the chosen theme wrapper prop to each ReportSection and to EnergyTypesSection/SimulatorsSection/VideosSection so every major section gets a distinct variant and adjacent sections differ. Ensure no section text content changes."
         }
       ]
     }

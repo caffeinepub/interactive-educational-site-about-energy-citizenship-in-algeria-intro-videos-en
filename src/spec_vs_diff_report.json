@@ -1,27 +1,39 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T17:43:40.367Z",
-  "summary": "REQ-18 and REQ-19 appear largely implemented: global theme tokens were updated in frontend/src/index.css for both :root and .dark, and key UI surfaces (TopNav, IntroSplash, DecoratedHeading, HelpBotPanel) were restyled using Tailwind token-based classes while preserving RTL direction in global styles. Some additional visual changes (global background overlay and footer styling) were introduced beyond the explicitly requested surfaces.",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-15T17:51:29.813Z",
+  "summary": "Diff adds per-section theme variant support via a `themeVariant` prop on major sections and applies variant classes per section in `MainContent.tsx`. `index.css` shows multiple section theme classes overriding CSS tokens (e.g., `--primary`, `--ring`, `--accent`, `--card`) in light mode. However, dark-mode-specific overrides for these per-section variants and confirmation that `DecoratedHeading` still relies purely on theme tokens are not evidenced in the provided diff excerpts (index.css is truncated; DecoratedHeading not shown).",
+  "missing_requirements": [
     {
-      "description": "Added/modified global layout visuals not explicitly requested (fixed full-screen background image overlay and a styled footer in AppLayout).",
-      "reason": "REQ-19 lists specific high-visibility surfaces to adjust (TopNav, IntroSplash, DecoratedHeading, HelpBotPanel) and does not mention adding/changing a global background overlay layer or altering footer presentation.",
+      "id": "REQ-21",
+      "requirement": "Add section theme variants in frontend/src/index.css with matching variants for dark mode.",
+      "reason": "The diff excerpt shows light-mode `.section-theme-*` token overrides, but does not show any `.dark .section-theme-*` (or equivalent) overrides. Because `frontend/src/index.css` is truncated, dark-mode variant support cannot be confirmed from the provided evidence.",
       "evidence": [
-        "frontend/src/components/AppLayout.tsx"
+        "frontend/src/index.css (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "DecoratedHeading continues to use theme tokens (e.g., primary) and therefore changes appearance per section without introducing hard-coded colors.",
+      "reason": "No diff is shown for `frontend/src/components/DecoratedHeading.tsx`, so it cannot be verified from the diff summary whether it still uses theme tokens and avoids hard-coded colors.",
+      "evidence": [
+        "frontend/src/sections/ReportSection.tsx",
+        "frontend/src/sections/EnergyTypesSection.tsx",
+        "frontend/src/sections/SimulatorsSection.tsx",
+        "frontend/src/sections/VideosSection.tsx"
       ]
     }
   ],
-  "confidence": 0.74,
+  "hallucinated_features": [],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/components/AppLayout.tsx",
-    "frontend/src/components/DecoratedHeading.tsx",
-    "frontend/src/components/HelpBotPanel.tsx",
-    "frontend/src/components/IntroSplash.tsx",
-    "frontend/src/components/TopNav.tsx",
     "frontend/src/index.css",
+    "frontend/src/sections/EnergyTypesSection.tsx",
+    "frontend/src/sections/MainContent.tsx",
+    "frontend/src/sections/ReportSection.tsx",
+    "frontend/src/sections/SimulatorsSection.tsx",
+    "frontend/src/sections/VideosSection.tsx",
     "project_state.json"
   ]
 }

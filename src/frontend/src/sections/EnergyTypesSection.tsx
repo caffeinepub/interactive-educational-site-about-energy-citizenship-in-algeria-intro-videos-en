@@ -3,12 +3,16 @@ import { energyTypes } from '../content/energyTypes';
 import ProsConsCard from '../components/ProsConsCard';
 import DecoratedHeading from '../components/DecoratedHeading';
 
-export default function EnergyTypesSection() {
+interface EnergyTypesSectionProps {
+  themeVariant?: string;
+}
+
+export default function EnergyTypesSection({ themeVariant }: EnergyTypesSectionProps) {
   const [selectedType, setSelectedType] = useState(energyTypes[0].id);
   const currentType = energyTypes.find(t => t.id === selectedType) || energyTypes[0];
 
   return (
-    <section id="energy-types" className="scroll-mt-20 mb-20">
+    <section id="energy-types" className={`scroll-mt-20 mb-20 ${themeVariant || ''}`}>
       <div className="bg-card rounded-2xl p-8 md:p-12 shadow-lg">
         <DecoratedHeading>
           مستكشف أنواع الطاقة
